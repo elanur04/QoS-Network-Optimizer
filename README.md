@@ -1,27 +1,62 @@
-Multi-Objective QoS Routing Optimization using RL & Meta-Heuristics
-This project focuses on finding the optimal path in a complex, 250-node network topology based on conflicting Quality of Service (QoS) metrics. The problem is addressed as an NP-Hard optimization challenge using Reinforcement Learning and Meta-Heuristic algorithms.
+# Multi-Objective QoS Routing Optimization using RL & Meta-Heuristics
 
-Project OverviewNetwork Model: 
-250 nodes with an Erdős-Rényi G(n,p) distribution (P=0.4).
-Optimization Metrics:
-*Latency: Minimizing total link and processing delays.
-*Reliability: Maximizing path stability using logarithmic cost functions.
-*Resource Usage: Optimizing bandwidth efficiency (1 Gbps basis).
-Methodology: Weighted Sum Method to balance QoS weights (Wdelay + Wreliability + Wresource = 1).
+This project finds the optimal path in a complex 250-node network topology based on
+conflicting Quality of Service (QoS) metrics. The problem is treated as an NP-hard
+optimization challenge and solved with Reinforcement Learning and meta-heuristic algorithms.
 
-My Contributions & Responsibilities
-In this 7 member team project, I took the lead in the following core areas:
+## Project Overview
 
-1. Technical Development (Lead Developer)
+- **Network model:** 250 nodes with an Erdős–Rényi G(n, p) distribution (p = 0.4)
+- **Optimization metrics**
+  - **Latency:** minimizing total link and processing delays
+  - **Reliability:** maximizing path stability using logarithmic cost functions
+  - **Resource usage:** optimizing bandwidth efficiency (1 Gbps basis)
+- **Method:** Weighted Sum Method to balance QoS weights
+  (W<sub>delay</sub> + W<sub>reliability</sub> + W<sub>resource</sub> = 1)
 
-Q-Learning Implementation: I architected the Reinforcement Learning environment, defining states (nodes), actions (neighbor selection), and complex reward functions based on the path's total cost.
-Network Topology Generator: I developed the module responsible for generating the 250-node graph and ensuring connectivity between source (S) and destination (D) pairs.
+## Algorithms
 
-Mathematical Modeling: I implemented the conversion of multiplicative reliability metrics into additive "Reliability Costs" to enable efficient optimization.
+| Algorithm | File |
+|---|---|
+| Q-Learning (Reinforcement Learning) | `q_agent.py`, `main_qlearning.py` |
+| Genetic Algorithm | `GenetikAlgoritma.py` |
+| Ant Colony Optimization | `aco_router.py`, `run_aco_console.py`, `run_aco_experiments.py` |
+| Graph model & metric evaluation | `Graf_Model.py`, `Metric_Evaluation.py` |
+| Benchmark & visualization | `benchmark`, `gorsellestirme.py` |
+| Desktop GUI (PyQt6 + pyqtgraph) | `arayüzMain.py` |
 
-2. Project Management & Leadership
-Team Coordination: Acted as the Project Coordinator, organizing team meetings, synchronizing tasks between 7 members, and managing the integration of different modules.
+## My Contributions & Responsibilities
 
-Documentation & Reporting: I authored the interim reports and the final technical documentation, ensuring all academic requirements and performance analysis benchmarks were met.
+In this 7-member team project, I led the following areas:
 
-Release Management: Managed the final delivery process, including code commenting, README preparation, and the demo presentation.
+### 1. Technical Development (Lead Developer)
+
+- **Q-Learning implementation:** Architected the RL environment, defining states (nodes),
+  actions (neighbor selection) and reward functions based on the path's total cost.
+- **Network topology generator:** Developed the module that generates the 250-node graph
+  and ensures connectivity between source (S) and destination (D) pairs.
+- **Mathematical modeling:** Converted multiplicative reliability metrics into additive
+  "reliability costs" to enable efficient optimization.
+
+### 2. Project Management & Leadership
+
+- **Team coordination:** Acted as project coordinator, organizing meetings, synchronizing
+  tasks between 7 members and managing the integration of modules.
+- **Documentation & reporting:** Authored the interim reports and final technical
+  documentation, ensuring academic requirements and performance benchmarks were met.
+- **Release management:** Managed the final delivery, including code comments, README
+  and the demo presentation.
+
+## Getting Started
+
+```bash
+git clone https://github.com/elanur04/QoS-Network-Optimizer.git
+cd QoS-Network-Optimizer
+pip install -r requirements.txt
+
+python main_qlearning.py      # Q-Learning from the console
+python run_aco_console.py     # Ant Colony Optimization from the console
+python arayüzMain.py          # Desktop GUI comparing all algorithms
+```
+
+Node, edge and demand data come from the `BSM307_317_Guz2025_TermProject_*.csv` files.
