@@ -6,6 +6,7 @@ import math
 from Graf_Model import ProjeAgi
 from Metric_Evaluation import RouteEvaluator
 from q_agent import QLearningAgent
+from qos_weights import normalize_weights
 
 def main():
     # Girdi olarak kullanılacak CSV dosyaları
@@ -44,13 +45,7 @@ def main():
         w_rel   = float(input("Reliability agirligi (orn 0.5): "))
         w_res   = float(input("Resource agirligi (orn 0.2): "))
 
-        # Ağırlıkların toplamı 1 değilse normalize ediliyor
-        total = w_delay + w_rel + w_res
-        if abs(total - 1.0) > 1e-6:
-            print("Uyari: Agirliklar 1'e esit degil, normalize ediliyor.")
-            w_delay /= total
-            w_rel   /= total
-            w_res   /= total
+        w_delay, w_rel, w_res = normalize_weights(w_delay, w_rel, w_res)
 
     except ValueError:
         # Hatalı girişte varsayılan değerler

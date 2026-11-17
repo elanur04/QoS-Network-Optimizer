@@ -60,3 +60,13 @@ python arayüzMain.py          # Desktop GUI comparing all algorithms
 ```
 
 Node, edge and demand data come from the `BSM307_317_Guz2025_TermProject_*.csv` files.
+
+## Input validation and tests
+
+Console QoS weights must be finite, non-negative and include at least one positive value. Invalid input uses the documented default weights instead of dividing by zero.
+
+```bash
+python -m unittest discover -p "test_*.py"
+```
+
+The automated tests cover weight validation. They do not benchmark routing performance or establish an optimality guarantee for the heuristics.
